@@ -60,7 +60,7 @@
     (:homepage "HOMEPAGE" nil nil parse)
     (:address "ADDRESS" nil nil newline)
     (:photo "PHOTO" nil nil parse)
-    (:gitlab "GITLAB" nil nil parse)
+    ;; (:gitlab "GITLAB" nil nil parse)
     (:github "GITHUB" nil nil parse)
     (:linkedin "LINKEDIN" nil nil parse)
     (:with-email nil "email" t t)
@@ -72,17 +72,19 @@
 (defun colorconf ()
   "puts color"
   "% Change the colours if you want to
-\\definecolor{VividPurple}{HTML}{009900}
 \\definecolor{SlateGrey}{HTML}{2E2E2E}
-\\definecolor{LightGrey}{HTML}{333333}
-\\colorlet{heading}{VividPurple}
-\\colorlet{accent}{VividPurple}
+\\definecolor{LightGrey}{HTML}{666666}
+\\definecolor{DarkPastelRed}{HTML}{450808}
+\\definecolor{PastelRed}{HTML}{8F0D0D}
+\\definecolor{GoldenEarth}{HTML}{E7D192}
+\\colorlet{name}{black}
+\\colorlet{tagline}{PastelRed}
+\\colorlet{heading}{DarkPastelRed}
+\\colorlet{headingrule}{GoldenEarth}
+\\colorlet{subheading}{PastelRed}
+\\colorlet{accent}{PastelRed}
 \\colorlet{emphasis}{SlateGrey}
 \\colorlet{body}{LightGrey}
-\\hypersetup{
- colorlinks=true,
- urlcolor=olive!50!black!30!green,
- }
 "
 )
 ;;;; Template
@@ -135,7 +137,7 @@ holding export options."
        (format "\\name{%s}\n" author))
      ;; photo
      (let ((photo (org-export-data (plist-get info :photo) info)))
-       (when (org-string-nw-p photo) (format "\\photo{2.8cm}{%s}\n" photo)))
+       (when (org-string-nw-p photo) (format "\\photo{3.8cm}{%s}\n" photo)))
 
      "\\personalinfo{\n"
      ;; address
@@ -165,7 +167,7 @@ holding export options."
                                          (nth 1 social-network)
                                          command))))
                 '((:github "github")
-                  (:gitlab "gitlab")
+                  ;; (:gitlab "gitlab")
                   (:linkedin "linkedin"))
                 "")
      "}\n"
